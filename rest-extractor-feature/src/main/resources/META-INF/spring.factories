@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  ru.sugarisboy.home.core.rest.extractor.feature.configuration.RestExtractorConfiguration
