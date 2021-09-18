@@ -17,7 +17,12 @@
     <description>HomeUI for my Home</description>
 
     <modules>
+        <module>home-main</module>
+        <module>home-api</module>
+        <module>home-module-station</module>
+        <module>home-common-api</module>
         <module>station-api</module>
+        <module>rest-extractor-feature</module>
     </modules>
 
     <packaging>pom</packaging>

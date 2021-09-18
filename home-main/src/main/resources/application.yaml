@@ -1,0 +1,8 @@
+integrations:
+    vk:
+        api: https://vk.com
+        ts-api: https://im.vk.com/
+
+logging.level.ru.sugarisboy.homecore: DEBUG
+logging.level.ru.sugarisboy.homecore.vk.VkApiClient: DEBUG
+logging.level.javax.net.debug: TRACE
