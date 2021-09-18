@@ -8,14 +8,28 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Getter
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 public class StationApi {
 
     private static StationWsConnection wsConnection;
 
-    @Getter
+    private boolean isConnected;
+
     @Setter
     private StationState state;
+
+    public void connect() {
+        try {
+            if (!isConnected) {
+                wsConnection = new StationWebSocketClient().createConnection();
+                isConnected = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            isConnected = false;
+        }
+    }
 
     public boolean hasState() {
         return state != null;
@@ -25,16 +39,9 @@ public class StationApi {
         wsConnection.sendCommand(command);
     }
 
-    /*
-     *
-     */
-
-    static {
-        try {
-            wsConnection = new StationWebSocketClient().createConnection();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void stop() {
+        wsConnection.close();
+        isConnected = false;
     }
 
     private static class SingletonHolder {
