@@ -18,7 +18,7 @@ public class PlayerState {
     private boolean hasProgressBar;
     private int id;
     private String liveStreamText;
-    private StationPlayerType playerType;
+    private String playerType;
     private String playlistDescription;
     private String playlistId;
     private int progress;

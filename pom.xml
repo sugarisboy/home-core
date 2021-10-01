@@ -21,6 +21,7 @@
         <module>home-common-api</module>
         <module>station-api</module>
         <module>rest-extractor-feature</module>
+        <module>station-dialogs-manager-feature</module>
     </modules>
 
     <packaging>pom</packaging>
