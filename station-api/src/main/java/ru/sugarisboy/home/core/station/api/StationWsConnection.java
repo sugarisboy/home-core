@@ -1,8 +1,8 @@
 package ru.sugarisboy.home.core.station.api;
 
-import ru.sugarisboy.home.core.station.api.dto.StationClientResponse;
-import ru.sugarisboy.home.core.station.api.dto.StationCommand;
-import ru.sugarisboy.home.core.station.api.dto.StationState;
+import ru.sugarisboy.home.core.station.api.dto.out.StationClientResponse;
+import ru.sugarisboy.home.core.station.api.dto.in.StationCommand;
+import ru.sugarisboy.home.core.station.api.dto.out.StationState;
 import ru.sugarisboy.home.core.station.api.mapper.StationResponseToStateMapper;
 
 import lombok.extern.slf4j.Slf4j;
@@ -14,15 +14,16 @@ import javax.websocket.ClientEndpoint;
 
 @Slf4j
 @ClientEndpoint
-class StationWsConnection extends WebSocketClient {
+public class StationWsConnection extends WebSocketClient {
 
     private final StationApi api = StationApi.getInstance();
     private final StationResponseToStateMapper mapper = new StationResponseToStateMapper();
 
     private String token;
 
-    public StationWsConnection(URI serverUri) {
+    StationWsConnection(URI serverUri, String token) {
         super(serverUri, Map.of("Origin", "http://yandex.ru/"));
+        this.token = token;
     }
 
     @Override
@@ -49,13 +50,9 @@ class StationWsConnection extends WebSocketClient {
         ex.printStackTrace();
     }
 
-    public void authorize(StationCommand request, String token) {
-        this.token = token;
-        this.sendCommand(request);
-    }
-
     public void sendCommand(StationCommand request) {
-        this.send(mapper.toBytes(request.withToken(token)));
+        request.setConversationToken(token);
+        this.send(mapper.toBytes(request));
     }
 
     @Override

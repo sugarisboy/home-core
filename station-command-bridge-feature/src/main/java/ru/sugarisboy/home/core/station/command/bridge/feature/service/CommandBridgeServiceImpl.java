@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.sugarisboy.home.core.station.api.dto.StationCommand;
 
 @Slf4j
 @Service
@@ -18,36 +17,36 @@ public class CommandBridgeServiceImpl implements CommandBridgeService {
 
     @Override
     public void stop() {
-        station.send(StationCommand.);
+        station.command().stop().send();
     }
 
     @Override
     public void play() {
-
+        station.command().play().send();
     }
 
     @Override
     public void nextTrack() {
-
+        station.command().nextTrack().send();
     }
 
     @Override
     public void prevTrack() {
-
+        station.command().prevTrack().send();
     }
 
     @Override
     public void likeCurrentTrack() {
-
+        station.command().like().send();
     }
 
     @Override
     public void unlikeCurrentTrack() {
-
+        station.command().unlike().send();
     }
 
     @Override
     public void setVolume(float value) {
-
+        station.command().changeVolume(value).send();
     }
 }

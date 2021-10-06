@@ -32,4 +32,4 @@ home-core:
   station.api.enabled: true
 
 logging.level.ru.sugarisboy.home.core.station.dialogs.manager.feature: DEBUG
-logging.level.ru.sugarisboy: INFO
+logging.level.ru.sugarisboy: DEBUG

@@ -1,6 +1,6 @@
-package ru.sugarisboy.home.core.station.command.bridge.feature.repository;
+package ru.sugarisboy.home.core.station.timers.feature.repository;
 
-import ru.sugarisboy.home.core.station.command.bridge.feature.model.Timer;
+import ru.sugarisboy.home.core.station.timers.feature.model.Timer;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

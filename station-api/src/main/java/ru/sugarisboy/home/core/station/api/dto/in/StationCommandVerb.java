@@ -1,4 +1,4 @@
-package ru.sugarisboy.home.core.station.api.dto;
+package ru.sugarisboy.home.core.station.api.dto.in;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,8 +13,8 @@ public enum StationCommandVerb {
     STOP("stop"),
     NEXT_TRACK("next"),
     PREV_TRACK("prev"),
-    LIKE,
-    UNLIKE;
+    SEND_TEXT("sendText"),
+    CHANGE_VOLUME("setVolume");
 
     @Getter
     private String commandNameApi = null;

@@ -1,4 +1,4 @@
-package ru.sugarisboy.home.core.station.api.dto;
+package ru.sugarisboy.home.core.station.api.dto.in;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 
@@ -8,7 +8,7 @@ public enum StationPlayerStateType {
 
     @JsonCreator
     public static StationPlayerStateType forName(String name) {
-        if (name == "")
+        if (name.equals(""))
             return null;
 
         for (StationPlayerStateType c : values()) {

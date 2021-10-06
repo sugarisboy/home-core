@@ -1,7 +1,5 @@
 package ru.sugarisboy.home.core.station.api.dialogs.request;
 
-import ru.sugarisboy.home.core.station.api.dto.StationPlayerStateType;
-
 import com.fasterxml.jackson.annotation.JsonCreator;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

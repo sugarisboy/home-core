@@ -1,4 +1,4 @@
-package ru.sugarisboy.home.core.station.api.dto;
+package ru.sugarisboy.home.core.station.api.dto.out;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

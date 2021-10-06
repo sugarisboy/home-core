@@ -1,4 +1,4 @@
-package ru.sugarisboy.home.core.station.command.bridge.feature.model;
+package ru.sugarisboy.home.core.station.timers.feature.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

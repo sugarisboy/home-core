@@ -1,4 +1,6 @@
-package ru.sugarisboy.home.core.station.api.dto;
+package ru.sugarisboy.home.core.station.api.dto.out;
+
+import ru.sugarisboy.home.core.station.api.dto.in.StationPlayerStateType;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

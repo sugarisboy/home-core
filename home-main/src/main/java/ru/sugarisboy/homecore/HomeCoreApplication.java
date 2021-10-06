@@ -15,9 +15,4 @@ public class HomeCoreApplication {
     public static void main(String[] args) {
         SpringApplication.run(HomeCoreApplication.class, args);
     }
-
-    @EventListener(classes = {ApplicationReadyEvent.class})
-    public void stop() {
-		StationApi.getInstance().createConnect();
-    }
 }
