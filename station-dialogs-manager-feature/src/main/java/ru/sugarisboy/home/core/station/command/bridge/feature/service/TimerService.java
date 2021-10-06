@@ -1,7 +1,7 @@
-package ru.sugarisboy.home.core.station.dialogs.manager.feature.service;
+package ru.sugarisboy.home.core.station.command.bridge.feature.service;
 
-import ru.sugarisboy.home.core.station.dialogs.manager.feature.model.Timer;
-import ru.sugarisboy.home.core.station.dialogs.manager.feature.repository.TimerRepository;
+import ru.sugarisboy.home.core.station.command.bridge.feature.model.Timer;
+import ru.sugarisboy.home.core.station.command.bridge.feature.repository.TimerRepository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

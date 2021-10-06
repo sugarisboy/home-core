@@ -19,7 +19,7 @@ public class StationApi {
     @Setter
     private StationState state;
 
-    public void connect() {
+    public void createConnect() {
         try {
             if (!isConnected) {
                 wsConnection = new StationWebSocketClient().createConnection();
@@ -39,7 +39,7 @@ public class StationApi {
         wsConnection.sendCommand(command);
     }
 
-    public void stop() {
+    public void closeConnection() {
         wsConnection.close();
         isConnected = false;
     }

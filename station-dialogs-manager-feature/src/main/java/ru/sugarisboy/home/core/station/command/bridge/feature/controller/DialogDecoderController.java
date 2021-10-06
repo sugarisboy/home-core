@@ -1,8 +1,8 @@
-package ru.sugarisboy.home.core.station.dialogs.manager.feature.controller;
+package ru.sugarisboy.home.core.station.command.bridge.feature.controller;
 
 import ru.sugarisboy.home.core.station.api.DialogManagerApi;
 import ru.sugarisboy.home.core.station.api.dialogs.usage.CommandDecoder;
-import ru.sugarisboy.home.core.station.dialogs.manager.feature.wrapper.TimerVoiceWrapper;
+import ru.sugarisboy.home.core.station.command.bridge.feature.wrapper.TimerVoiceWrapper;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

@@ -18,6 +18,6 @@ public class HomeCoreApplication {
 
     @EventListener(classes = {ApplicationReadyEvent.class})
     public void stop() {
-		StationApi.getInstance().connect();
+		StationApi.getInstance().createConnect();
     }
 }

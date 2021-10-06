@@ -1,4 +1,4 @@
-package ru.sugarisboy.home.core.station.dialogs.manager.feature.wrapper;
+package ru.sugarisboy.home.core.station.command.bridge.feature.wrapper;
 
 import ru.sugarisboy.home.core.common.api.utils.StringUtils;
 import ru.sugarisboy.home.core.common.api.utils.TimeUtils;
@@ -6,8 +6,8 @@ import ru.sugarisboy.home.core.station.api.dialogs.request.DialogRequest;
 import ru.sugarisboy.home.core.station.api.dialogs.usage.CommandResponse;
 import ru.sugarisboy.home.core.station.api.dialogs.usage.StationAudio;
 import ru.sugarisboy.home.core.station.api.dialogs.usage.TtsMessage;
-import ru.sugarisboy.home.core.station.dialogs.manager.feature.model.Timer;
-import ru.sugarisboy.home.core.station.dialogs.manager.feature.service.TimerService;
+import ru.sugarisboy.home.core.station.command.bridge.feature.model.Timer;
+import ru.sugarisboy.home.core.station.command.bridge.feature.service.TimerService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -11,7 +11,6 @@ public class StationCommand {
 
     private final UUID id = UUID.randomUUID();
     private final long sentTime = System.currentTimeMillis() * 1000000;
-
     private final StationRequestPayload payload;
 
     private String conversationToken;
@@ -38,11 +37,34 @@ public class StationCommand {
         );
     }
 
-    public static StationCommand execute(String text) {
+    public static StationCommand executeCustomCommand(String text) {
         return new StationCommand(
                 StationRequestPayload.builder()
                         .command(COMMAND_SEND_TEXT)
                         .text(text)
+                        .build()
+        );
+    }
+
+    public static StationCommand executeCommand(StationCommandVerb verb) {
+        switch (verb) {
+            case NEXT_TRACK:
+            case PREV_TRACK:
+            case PLAY:
+            case STOP:
+                return executeinternalComamnd(verb);
+        }
+        return new StationCommand(
+                StationRequestPayload.builder()
+                        .command(verb.getCommandNameApi())
+                        .build();
+        )
+    }
+
+    private static StationCommand executeinternalComamnd(StationCommandVerb verb) {
+        return new StationCommand(
+                StationRequestPayload.builder()
+                        .command(verb.getCommandNameApi())
                         .build()
         );
     }
