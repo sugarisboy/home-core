@@ -1,7 +1,8 @@
 package ru.sugarisboy.home.core.station.api;
 
-import ru.sugarisboy.home.core.station.api.dto.StationCommand;
-import ru.sugarisboy.home.core.station.api.dto.StationState;
+import ru.sugarisboy.home.core.station.api.dto.in.StationCommand;
+import ru.sugarisboy.home.core.station.api.dto.in.StationRequestPayloadBuilder;
+import ru.sugarisboy.home.core.station.api.dto.out.StationState;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -19,7 +20,7 @@ public class StationApi {
     @Setter
     private StationState state;
 
-    public void connect() {
+    public void createConnect() {
         try {
             if (!isConnected) {
                 wsConnection = new StationWebSocketClient().createConnection();
@@ -35,11 +36,11 @@ public class StationApi {
         return state != null;
     }
 
-    public void send(StationCommand command) {
-        wsConnection.sendCommand(command);
+    public StationRequestPayloadBuilder command() {
+        return StationCommand.build(wsConnection).command();
     }
 
-    public void stop() {
+    public void closeConnection() {
         wsConnection.close();
         isConnected = false;
     }

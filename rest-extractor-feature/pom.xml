@@ -31,9 +31,16 @@
             <version>5.2.5.RELEASE</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>ru.sugarisboy</groupId>
+            <artifactId>station-command-bridge-feature</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

@@ -20,7 +20,7 @@ public class RestExtractorController {
     private final ExtractorService extractorService;
 
     @GetMapping("/state/{module}")
-    public ResponseEntity<Object> extractModuleState(@PathVariable ModuleApi module) {
+    public ResponseEntity<Object> extractModuleState(@PathVariable ModuleApi module) { ;
         Object state = extractorService.extract(module);
         return ResponseEntity.ok(state);
     }

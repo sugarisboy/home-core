@@ -1,7 +1,7 @@
 package ru.sugarisboy.home.core.station.api;
 
 import ru.sugarisboy.home.core.common.api.utils.PropertiesUtils;
-import ru.sugarisboy.home.core.station.api.dto.StationCommand;
+import ru.sugarisboy.home.core.station.api.dto.in.StationCommand;
 
 import com.nimbusds.jose.util.X509CertUtils;
 import lombok.val;
@@ -25,18 +25,22 @@ class StationWebSocketClient {
         Properties properties = PropertiesUtils.read("prop.properties");
         Properties secureProps = PropertiesUtils.read("secure.properties");
 
+        /* Get authorization token */
+        val token = secureProps.getProperty(PROPERTY_TOKEN);
+
         /* Init connection */
         val address = properties.getProperty(PROPERTY_ADDRESS);
-        val controller = new StationWsConnection(new URI(address));
+        val controller = new StationWsConnection(new URI(address), token);
 
         /* Configure connection */
         val cert = secureProps.getProperty(PROPERTY_CERT);
         controller.setSocketFactory(configureSslSocketFactory(cert));
         controller.connectBlocking();
 
-        /* Send authorize message */
-        val token = secureProps.getProperty(PROPERTY_TOKEN);
-        controller.authorize(StationCommand.ping(), token);
+        StationCommand.build(controller)
+                .command()
+                .ping()
+                .send();
 
         return controller;
     }

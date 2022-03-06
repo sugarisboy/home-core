@@ -2,5 +2,34 @@ spring:
   jackson:
     serialization:
       INDENT_OUTPUT: true
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/homecore
+    username: homecore
+    password: homecore
+    hikari:
+      idle-timeout: ${DB_IDLE_TIMEOUT:10000}
+      minimum-idle: ${DB_MINIMUM_IDLE:0}
+      maximum-pool-size: ${DB_MAXIMUM_POOL_SIZE:10}
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+        default_schema: homecore
+        format_sql: true
+        temp:
+          use_jdbc_metadata_defaults: false
+    show-sql: false
+  flyway:
+    schemas: homecore
+    locations: classpath:db/migration
+    baseline-on-migrate: true
 
+home-core:
+  station.api.enabled: true
+
+logging.level.ru.sugarisboy.home.core.station.dialogs.manager.feature: DEBUG
 logging.level.ru.sugarisboy: DEBUG

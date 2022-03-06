@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  ru.sugarisboy.home.core.station.command.bridge.feature.configuration.StationCommandBridgeConfiguration

@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  postgres:
+    image: "postgres:11-alpine"
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=homecore
+      - POSTGRES_USER=homecore
+      - POSTGRES_PASSWORD=homecore
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U homecore"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
