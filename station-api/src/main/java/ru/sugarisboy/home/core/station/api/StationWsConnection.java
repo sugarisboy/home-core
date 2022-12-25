@@ -28,12 +28,13 @@ public class StationWsConnection extends WebSocketClient {
 
     @Override
     public void onOpen(ServerHandshake handshake) {
-        log.info("Connected to station");
+        System.out.println("Connected to station");
     }
 
     @Override
     public void onMessage(String message) {
         log.debug("Data received from the station ");
+        System.out.println(message);
         StationClientResponse responseDto = mapper.convertToDto(message);
         StationState state = responseDto.getState();
         api.setState(state);
@@ -42,22 +43,25 @@ public class StationWsConnection extends WebSocketClient {
 
     @Override
     public void onClose(int code, String reason, boolean remote) {
-        log.info("Disconnected to station: " + reason + ", remote = " + remote);
+        System.out.println("Disconnected to station: " + reason + ", remote = " + remote);
+        StationApi.getInstance().closeConnection();
     }
 
     @Override
     public void onError(Exception ex) {
+        System.out.println("On error: " + ex.getMessage());
         ex.printStackTrace();
     }
 
     public void sendCommand(StationCommand request) {
+        System.out.println("send: " + request);
         request.setConversationToken(token);
         this.send(mapper.toBytes(request));
     }
 
     @Override
     public void send(String text) {
-        log.debug("Send to station: {}", text);
+        System.out.println("Send to station: " + text);
         super.send(text);
     }
 }

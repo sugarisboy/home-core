@@ -5,9 +5,9 @@ import ru.sugarisboy.home.core.station.api.StationWsConnection;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.Accessors;
 import java.util.UUID;
+import java.util.function.Consumer;
 
 @Data
 public class StationCommand {
@@ -30,6 +30,7 @@ public class StationCommand {
         private final StationWsConnection wsConnection;
 
         private StationRequestPayload payload;
+        private Consumer<Exception> onError;
 
         public StationRequestPayloadBuilder command() {
             return StationRequestPayload.builder(this);
@@ -40,9 +41,22 @@ public class StationCommand {
             return this;
         }
 
+        public Builder onError(Consumer<Exception> errorHandler) {
+            this.onError = errorHandler;
+            return this;
+        }
+
         public void send() {
             StationCommand command = new StationCommand(payload);
-            wsConnection.sendCommand(command);
+            try {
+                wsConnection.sendCommand(command);
+            } catch (Exception e) {
+                if (onError != null) {
+                    onError.accept(e);
+                } else {
+                    throw e;
+                }
+            }
         }
     }
 

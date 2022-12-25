@@ -31,5 +31,10 @@ spring:
 home-core:
   station.api.enabled: true
 
+station:
+  caCert: none
+  token: none
+  wsAddress: none
+
 logging.level.ru.sugarisboy.home.core.station.dialogs.manager.feature: DEBUG
 logging.level.ru.sugarisboy: DEBUG
